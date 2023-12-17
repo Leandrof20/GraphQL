@@ -1,0 +1,41 @@
+# tipos
+type Category  {
+  id: ID!
+  name: String!
+  description: String
+  courses: [Course!]!
+}
+
+type Course {
+  id: ID!
+  name: String!
+  description: String
+  category: Category!
+}
+
+# informações que precisamos criar 
+
+# inputs nos ajudam a fazer a entrada de dados
+input NewCategory {
+  name: String!
+  description: String
+}
+
+input NewCourse {
+  name: String!
+  description: String
+  categoryId: ID!
+}
+
+# Realizar consultas
+type Query {
+  categories: [Category!]!
+  courses: [Course!]!
+}
+
+#multation, quando precisamos alterar os modelos que criamos
+#alterar ou criar
+type Mutation {
+  createCategory(input: NewCategory!): Category!
+  createCourse(input: NewCourse!): Course!
+}
